@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  
+<div class="row">
+Phone Number: 
+<input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" style="width: 200px;border-radius: 5px;height: 20px;" minlength ="7" maxlength="10"/>
+
+</div>
+<br>
+<button (click)="generatePhoneNumbers()">Submit</button>
+
+
+<br>
+<br>
+<br>
+
+<div class="row" *ngIf="phoneNumbers">
+Total Number of combinations: {{phoneNumbers.length}}
+<br>
+<br>
+<br>
+<br>
+<table style="width:100%;">
+<tbody>
+<tr class="row" *ngFor="let result of phoneNumbers | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+<td class="col">
+{{result}}
+</td>
+</tr>
+</tbody>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table>
+</div>
